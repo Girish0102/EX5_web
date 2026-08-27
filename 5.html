@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dice Roll</title>
+</head>
+<body>
+
+<h1>Roll the Dice!</h1>
+
+<div>
+
+    <p id="dice" style="font-size: 100px;">⚀</p>
+
+    <button id="roll">Roll Dice</button>
+
+</div>
+
+<p>
+    Last Roll:
+    <span id="result">1</span>
+</p>
+
+<p>
+    Total Rolls:
+    <span id="total">0</span>
+</p>
+
+<script>
+
+var totalRolls = 0;
+
+// Attach event handler to the button
+document.getElementById("roll").addEventListener("click", rollDice);
+
+function rollDice() {
+
+    // Generate random number from 1 to 6
+    var number = Math.floor(Math.random() * 6) + 1;
+
+    // Dice symbols
+    var diceFaces = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
+
+    // Change dice face
+    document.getElementById("dice").innerHTML =
+        diceFaces[number - 1];
+
+    // Display result
+    document.getElementById("result").innerHTML = number;
+
+    // Increase total rolls
+    totalRolls++;
+
+    document.getElementById("total").innerHTML = totalRolls;
+}
+
+</script>
+
+</body>
+</html>

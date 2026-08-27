@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pizza Order Form</title>
+</head>
+<body>
+
+<h1>Pizza Order Form</h1>
+
+<fieldset>
+
+    Small Pizza:
+    <input type="text" id="small">
+    <br><br>
+
+    Medium Pizza:
+    <input type="text" id="medium">
+    <br><br>
+
+    Large Pizza:
+    <input type="text" id="large">
+    <br><br>
+
+    Delivery:
+
+    <label>
+        <input type="radio" value="0" name="delivery" checked>
+        Pickup
+    </label>
+
+    <label>
+        <input type="radio" value="50" name="delivery">
+        Home Delivery
+    </label>
+
+    <br><br>
+
+    <button id="submit">Calculate Order</button>
+
+</fieldset>
+
+<p>
+    Cost of Order:
+    <span id="price"></span>
+</p>
+
+<script>
+
+// Attach event handler to the button
+document.getElementById("submit").addEventListener("click", calculateOrder);
+
+function calculateOrder() {
+
+    // Get pizza quantities
+    var small = parseInt(document.getElementById("small").value) || 0;
+    var medium = parseInt(document.getElementById("medium").value) || 0;
+    var large = parseInt(document.getElementById("large").value) || 0;
+
+    // Pizza prices
+    var smallPrice = 150;
+    var mediumPrice = 250;
+    var largePrice = 350;
+
+    // Calculate pizza cost
+    var cost = (small * smallPrice) +
+               (medium * mediumPrice) +
+               (large * largePrice);
+
+    // Get delivery option
+    var delivery = parseInt(
+        document.querySelector('input[name="delivery"]:checked').value
+    );
+
+    // Add delivery charge
+    var total = cost + delivery;
+
+    // Display total
+    document.getElementById("price").innerHTML =
+        "Rs. " + total.toFixed(2);
+}
+
+</script>
+
+</body>
+</html>

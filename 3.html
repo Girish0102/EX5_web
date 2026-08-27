@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gym Workout Split</title>
+</head>
+
+<body>
+
+<h1>Arnold Gym Workout Split</h1>
+
+Days:
+<input id="days" type="number">
+
+Exercises:
+<input id="ex" type="number">
+
+<button onclick="generate()">Generate Workout</button>
+
+<div id="workout"></div>
+
+<script>
+
+function generate() {
+
+    var list = [
+        ["bench.jpg", "Bench Press", "Chest"],
+        ["biceps.jpg", "Bicep Curl", "Biceps"],
+        ["squat.jpg", "Squat", "Legs"],
+        ["shoulder.jpg", "Arnold Press", "Shoulders"],
+        ["back.jpeg", "Lat Pulldown", "Back"],
+        ["triceps.jpeg", "Tricep Extension", "Triceps"]
+    ];
+
+    var d = document.getElementById("days").value;
+    var e = document.getElementById("ex").value;
+    var out = "";
+
+    for (var i = 1; i <= d; i++) {
+
+        out += "<h2>Workout Day " + i + "</h2>";
+
+        for (var j = 0; j < e; j++) {
+
+            var x = list[Math.floor(Math.random() * list.length)];
+
+            out += "<div>" +
+                   "<img src='" + x[0] + "' width='150'><br>" +
+                   x[1] + " - " + x[2] +
+                   "</div><br>";
+        }
+    }
+
+    document.getElementById("workout").innerHTML = out;
+}
+
+</script>
+
+</body>
+</html>

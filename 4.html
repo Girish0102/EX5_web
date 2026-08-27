@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Protein Requirement Calculator</title>
+</head>
+<body>
+
+<h1>Daily Protein Requirement Calculator</h1>
+
+<fieldset>
+
+    Weight (in kg):
+    <input type="text" id="weight">
+    <br><br>
+
+    Activity / Goal:
+
+    <select id="goal">
+        <option value="0.8">Low Activity - 0.8 g/kg</option>
+        <option value="1.2">Moderately Active - 1.2 g/kg</option>
+        <option value="1.6">Muscle Building - 1.6 g/kg</option>
+        <option value="2.0">Very Active - 2.0 g/kg</option>
+    </select>
+
+    <br><br>
+
+    <button onclick="calculateProtein()">Calculate Protein</button>
+
+</fieldset>
+
+<h3>Result</h3>
+
+<p>
+    Recommended Protein:
+    <span id="recommendation"></span>
+</p>
+
+<p>
+    Daily Protein Requirement:
+    <span id="answer"></span> grams
+</p>
+
+<script>
+
+function calculateProtein() {
+
+    // Get weight from input box
+    var weight = parseFloat(document.getElementById("weight").value);
+
+    // Get selected protein requirement
+    var protein = parseFloat(document.getElementById("goal").value);
+
+    // Calculate daily protein
+    var result = weight * protein;
+
+    // Display recommendation
+    document.getElementById("recommendation").innerHTML =
+        protein + " grams per kg";
+
+    // Display total protein
+    document.getElementById("answer").innerHTML =
+        result.toFixed(2);
+}
+
+</script>
+
+</body>
+</html>
